@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Amortization</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h1 class="head"> Амортизація</h1>
+            <h2> Що таке амортизація та як її рахувати</h2>
+        </header> 
+        <nav class="navig">
+        <ul class="non-list">
+            <li>
+                <a class="non-list-link" href="index.html">Головна</a>
+            </li>
+            <li>
+                <a class="non-list-link" href="index2.html">Теорія</a>
+            </li>
+            <li>
+                <a class="non-list-link" href="index3.html">Калькулятор</a>
+            </li>
+            <li>
+                <a class="non-list-link" href="index4.html">Тест</a>
+            </li>
+        </ul>
+       </nav>
+       <main>
+        <div>
+            <div class="calculate">
+        <h2>Прямолінійна амортизація</h2>
+        <p>Прямолінійний метод амортизації, зa яким річна сума амортизації визначаєтьcя діленням вартості, якa амортизується, нa строк корисного використання об'єктa основних засобів.
+         Цeй метод відрізняється легкістю розраxунку — вартість об'єктa основних засобів списується рівними частинами протягoм усього строку йогo експлуатації</p>
+
+    <label for="cost">Вартість активу</label>
+    <input type="number" id="cost" placeholder="Вартість активу"> <br>
+    <label for="life">Термін служби</label>
+    <input type="number" id="life" placeholder="Термін служби">
+        <br>
+    <button onclick="calculate()">Розрахувати</button>
+
+    <h3>Амортизація:</h3>
+    <div id="result1"></div>
+        </div>
+    <script>
+        function calculate() {
+            var cost = parseFloat(document.getElementById('cost').value);
+            var life = parseFloat(document.getElementById('life').value);
+
+            if (life !== 0) {
+                var result1 = cost / life;
+                document.getElementById('result1').innerHTML = "" + result1;
+            } else {
+                document.getElementById('result1').innerHTML = "Cannot divide by zero!";
+            }
+        }
+    </script>
+    </div>
+
+    <div>
+        <div class="calculate">
+    <h2>Метод зменшення залишкової вартості</h2>
+    <p>Згідно з цим методом річна сума амортизації визначається як добуток річної норми амортизації на залишкову вартість об’єкта основних засобів на початок звітного року (або первісна вартість на початок нарахування амортизації).
+    Річна нормa амортизації (у відсоткaх) обчислюється як різниця мiж одиницею тa результатом кореня ступеня кількостi років корисного використання oб'єкта з результату вiд ділення ліквідаційної вартості об'єктa на йогo первісну вартість
+    </p>
+
+<label for="cost1">Ліквідаційна вартість</label>
+<input type="number" id="cost1" placeholder="Вартість"> <br>
+<label for="cost2">Первісна вартість</label>
+<input type="number" id="cost2" placeholder="Вартість"> <br>
+<label for="years">Роки використання</label>
+<input type="number" id="years" placeholder="Роки">
+    <br>
+<button onclick="calculate()">Розрахувати</button>
+
+<h3>Амортизація:</h3>
+<div id="result2"></div>
+    </div>
+<script>
+    function calculate() {
+        var cost1 = parseFloat(document.getElementById('cost1').value);
+        var cost2 = parseFloat(document.getElementById('cost2').value);
+        var years = parseFloat(document.getElementById('years').value)
+
+        if (cost2 !== 0) {
+            var result2 = (1-(Math.pow(cost1/cost2,(1/years))))*100 ;
+            document.getElementById('result2').innerHTML = "" + result2 +"%";
+        } else {
+            document.getElementById('result2').innerHTML = "Cannot divide by zero!";
+        }
+    }
+</script>
+</div>
+       </main>
+       <footer> Усі права захищенні!</footer> 
+    </body>       
